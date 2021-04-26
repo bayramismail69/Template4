@@ -1,0 +1,35 @@
+.bg-gradient-default {
+    background: linear-gradient(
+87deg
+,#ac65d5 0,#362eca 100%)!important;
+}
+.ml-card-product-price {
+    margin-left: 13rem!important;
+}
+.position-absolute-card-product-price {
+    position: absolute;
+}
+.bg-card-product-price{
+    background-color: black;
+    border-radius:5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    opacity: 0.6;
+}
+.w-30-card-product-price{
+  padding:6px;
+}
+.h3-card-product-price{
+    color: white;
+}
+.carousel-indicators{
+    position: unset;
+    z-index:auto;
+}
+.carousel-item-card{
+  cursor: grab;
+}
+.card-product{
+    max-width: 300px; 
+    max-height: 350px
+}

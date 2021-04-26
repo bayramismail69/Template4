@@ -1,0 +1,98 @@
+<!-- <li class="nav-item dropdown">
+    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="media align-items-center">
+        <span class="avatar avatar-sm rounded-circle">
+          <img alt="Image placeholder" src="../../assets/img/theme/team-4.jpg">
+        </span>
+        <div class="media-body  ml-2  d-none d-lg-block">
+          <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+        </div>
+      </div>
+    </a>
+    <div class="dropdown-menu  dropdown-menu-right ">
+      <div class="dropdown-header noti-title">
+        <h6 class="text-overflow m-0">Welcome!</h6>
+      </div>
+      <a href="#!" class="dropdown-item">
+        <i class="ni ni-single-02"></i>
+        <span>My profile</span>
+      </a>
+      <a href="#!" class="dropdown-item">
+        <i class="ni ni-settings-gear-65"></i>
+        <span>Settings</span>
+      </a>
+      <a href="#!" class="dropdown-item">
+        <i class="ni ni-calendar-grid-58"></i>
+        <span>Activity</span>
+      </a>
+      <a href="#!" class="dropdown-item">
+        <i class="ni ni-support-16"></i>
+        <span>Support</span>
+      </a>
+      <div class="dropdown-divider"></div>
+      <a href="#!" class="dropdown-item">
+        <i class="ni ni-user-run"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </li> -->
+  
+<li class="nav-item">
+  <button
+    type="button"
+    class="btn btn-secondary btn-login float-left "
+    data-toggle="modal"
+    data-target="#modal-form"
+  >
+    <i class="fas fa-sign-in-alt"></i> Giriş Yap
+  </button>
+  <button
+    type="button"
+    class="btn btn-secondary float-left btn-login "
+    data-toggle="modal"
+    data-target="#modal-register"
+  >
+    <i class="fas fa-sign-out-alt"></i> Kayıt Ol
+  </button>
+</li>
+<div
+  class="modal fade"
+  id="modal-form"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modal-form"
+  style="display: none"
+  aria-hidden="true"
+>
+  <!-- Login Form Start -->
+  <div
+
+    class="modal-dialog modal- modal-dialog-centered modal-sm"
+    role="document"
+  >
+    <div class="modal-content">
+    <app-login-form></app-login-form>
+    </div>
+  </div>
+  <!-- Login Form End -->
+</div>
+<!-- Register Form Start -->
+<div
+  class="modal fade"
+  id="modal-register"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modal-form"
+  style="display: none"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal- modal-dialog-centered modal-sm"
+    role="document"
+  >
+    <div class="modal-content">
+      <app-register-form></app-register-form>
+    </div>
+  </div>
+</div>
+<!-- Register Form End -->
