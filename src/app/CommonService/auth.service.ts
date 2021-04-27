@@ -5,7 +5,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { LoginUser } from '../CommonModel/login/login-user';
 import { TokenModel } from '../CommonModel/login/token-model';
+import { AlertifyService } from './alertify.service';
 import { LocalStorageService } from './local-storage.service';
+import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,9 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private storageService: LocalStorageService,
-    private router: Router
+    private sessionStorageService:SessionStorageService,
+    private router: Router,
+    private alertifyService: AlertifyService
   ) {}
 
   login(loginUser: LoginUser) {
@@ -34,23 +38,38 @@ export class AuthService {
       })
       .subscribe((data) => {
         if (data.success) {
-          this.storageService.setToken(data.data.token);
-          this.claims = data.data.claims;
+          if(loginUser.remberMe===true){
+            this.storageService.setToken(data.data.token);
+            this.claims = data.data.claims;
 
-          var decode = this.jwtHelper.decodeToken(
-            this.storageService.getToken()
+            var decode = this.jwtHelper.decodeToken(
+              this.storageService.getToken()
+            );
+          }
+          else
+          {
+           this.sessionStorageService.setToken(data.data.token);
+           var decode = this.jwtHelper.decodeToken(
+            this.sessionStorageService.getToken()
           );
+          }
+          
+        
 
           var propUserName = Object.keys(decode).filter((x) =>
             x.endsWith('/name')
           )[0];
           this.userName = decode[propUserName];
           // this.sharedService.sendChangeUserNameEvent();
-
-          this.router.navigateByUrl('/dashboard');
+            console.log(decode,this.userName,propUserName);
+          // this.router.navigateByUrl('/dashboard');
+          this.alertifyService.success("Hos Geldiniz "+this.userName);
         } else {
-          // this.alertifyService.warning(data.message);
+          this.alertifyService.warning(data.message);
         }
+      },responseError=>{
+        console.log(responseError);
+        this.alertifyService.error(responseError.error);
       });
   }
 

@@ -2,5 +2,6 @@ export class LoginUser
 {
     email:string;
     password:string;
-    lang:string
+    lang:string;
+    remberMe:boolean;
 }

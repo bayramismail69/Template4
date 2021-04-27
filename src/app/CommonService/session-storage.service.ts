@@ -3,32 +3,32 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageService {
+export class SessionStorageService {
 
   constructor() { }
   setToken(token: string) {
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
   }
 
   removeToken(){
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
   }
 
   removeItem(itemName:string)
   {
-    localStorage.removeItem(itemName);
+    sessionStorage.removeItem(itemName);
   }
 
   getToken():string {
-    return localStorage.getItem("token");
+    return sessionStorage.getItem("token");
     
   }
 
   setItem(key:string,data:any){
-    localStorage.setItem(key,data);
+    sessionStorage.setItem(key,data);
   }
 
   getItem(key:string){
-    return localStorage.getItem(key);
+    return sessionStorage.getItem(key);
   }
 }

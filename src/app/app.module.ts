@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +17,15 @@ import { UserthmeProductCardListComponent } from './user-them/components/userthm
 import { LoginNavbarComponent } from './CommonComponents/login-navbar/login-navbar.component';
 import { RegisterFormComponent } from './CommonComponents/register-form/register-form.component';
 
-import { JwtModule } from "@auth0/angular-jwt";
 
+import { JwtModule } from "@auth0/angular-jwt";
+import { AlertifyService } from './CommonService/alertify.service';
+import { AuthService } from './CommonService/auth.service';
+import { LocalStorageService } from './CommonService/local-storage.service';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -38,9 +46,18 @@ import { JwtModule } from "@auth0/angular-jwt";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [AlertifyService, AuthService, LocalStorageService,  HttpClient
+  ],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
