@@ -4,3 +4,9 @@
 .modal-backdrop{
     position: unset;
 }
+.nav-link{
+    color:white;
+}
+.nav-link:hover{
+    color:darkgray;
+}

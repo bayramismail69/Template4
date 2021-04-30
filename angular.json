@@ -36,8 +36,20 @@
               "node_modules/alertifyjs/build/css/themes/bootstrap.min.css"
             ],
             "scripts": [
-              "node_modules/alertifyjs/build/alertify.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+              "./node_modules/alertifyjs/build/alertify.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "./node_modules/jquery/dist/jquery.min.js",
+            "./src/assets/vendor/jquery/dist/jquery.min.js",
+            "./src/assets/vendor/js-cookie/js.cookie.js",
+            "./src/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js",
+            "./src/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js",
+            "./src/assets/vendor/chart.js/dist/Chart.min.js",
+            "./src/assets/vendor/chart.js/dist/Chart.extension.js",
+            "./src/assets/js/argon.min5438.js",
+            "./src/assets/js/demo.min.js",
+            "./src/assets/vendor/sweetalert2/dist/sweetalert2.min.js"
+            
+          ]
           },
           "configurations": {
             "production": {
@@ -100,7 +112,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+             
+            ]
           }
         },
         "lint": {

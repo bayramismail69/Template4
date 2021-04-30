@@ -23,7 +23,7 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private storageService: LocalStorageService,
-    private sessionStorageService:SessionStorageService,
+    private sessionStorageService: SessionStorageService,
     private router: Router,
     private alertifyService: AlertifyService
   ) {}
@@ -36,83 +36,97 @@ export class AuthService {
       .post<TokenModel>(environment.getApiUrl + '/Auth/login', loginUser, {
         headers: headers,
       })
-      .subscribe((data) => {
-        if (data.success) {
-          if(loginUser.remberMe===true){
-            this.storageService.setToken(data.data.token);
-            this.claims = data.data.claims;
+      .subscribe(
+        (data) => {
+          if (data.success) {
+            if (loginUser.remberMe === true) {
+              this.storageService.setToken(data.data.token);
+              this.claims = data.data.claims;
 
-            var decode = this.jwtHelper.decodeToken(
-              this.storageService.getToken()
-            );
-          }
-          else
-          {
-           this.sessionStorageService.setToken(data.data.token);
-           var decode = this.jwtHelper.decodeToken(
-            this.sessionStorageService.getToken()
-          );
-          }
-          
-        
+              var decode = this.jwtHelper.decodeToken(
+                this.storageService.getToken()
+              );
+            } else {
+              this.sessionStorageService.setToken(data.data.token);
+              var decode = this.jwtHelper.decodeToken(
+                this.sessionStorageService.getToken()
+              );
+            }
 
-          var propUserName = Object.keys(decode).filter((x) =>
-            x.endsWith('/name')
-          )[0];
-          this.userName = decode[propUserName];
-          // this.sharedService.sendChangeUserNameEvent();
-            console.log(decode,this.userName,propUserName);
-          // this.router.navigateByUrl('/dashboard');
-          this.alertifyService.success("Hos Geldiniz "+this.userName);
-        } else {
-          this.alertifyService.warning(data.message);
+            var propUserName = Object.keys(decode).filter((x) =>
+              x.endsWith('/name')
+            )[0];
+            this.userName = decode[propUserName];
+            // this.sharedService.sendChangeUserNameEvent();
+           
+            // this.router.navigateByUrl('/dashboard');
+            this.alertifyService.success('Hos Geldiniz ' + this.userName);
+            window.location.replace('');
+          } else {
+            this.alertifyService.warning(data.message);
+          }
+        },
+        (responseError) => {
+          console.log(responseError);
+          this.alertifyService.error(responseError.error);
         }
-      },responseError=>{
-        console.log(responseError);
-        this.alertifyService.error(responseError.error);
-      });
+      );
   }
 
   logOut() {
     this.storageService.removeToken();
+    this.sessionStorageService.removeToken();
     this.storageService.removeItem('lang');
     this.claims = [];
+    window.location.replace('');
   }
   getUserName(): string {
     return this.userName;
   }
+  getToken()
+  {
+    if (this.storageService.getToken() != null) {
+      return this.storageService.getToken();
+    } else if (this.sessionStorageService.getToken != null) {
+      return this.sessionStorageService.getToken();
+    }
+    return null
+  }
   loggedIn(): boolean {
     let isExpired = this.jwtHelper.isTokenExpired(
-      this.storageService.getToken()
+   this.getToken()
     );
     return !isExpired;
   }
 
   setClaims() {
+    var token = this.getToken();
+  
     if (
       (this.claims == undefined || this.claims.length == 0) &&
-      this.storageService.getToken() != null &&
+      token != null &&
       this.loggedIn()
     ) {
-      this.httpClient
-        .get<string[]>(
-          environment.getApiUrl + '/OperationClaims/getuserclaimsfromcache'
-        )
-        .subscribe((data) => {
-          this.claims = data;
-        });
+      
+      // this.httpClient
+      //   .get<string[]>(
+      //     environment.getApiUrl + '/OperationClaims/getuserclaimsfromcache'
+      //   )
+      //   .subscribe((data) => {
+      //     this.claims = data;
+      //   });
 
-      var token = this.storageService.getToken();
       var decode = this.jwtHelper.decodeToken(token);
 
       var propUserName = Object.keys(decode).filter((x) =>
         x.endsWith('/name')
       )[0];
       this.userName = decode[propUserName];
+      
     }
   }
   getCurrentUserId() {
-    this.jwtHelper.decodeToken(this.storageService.getToken()).userId;
+    this.jwtHelper.decodeToken(this.getToken()).userId;
   }
 
   claimGuard(claim: string): boolean {

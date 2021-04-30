@@ -4,7 +4,7 @@
 ,#ac65d5 0,#362eca 100%)!important;
 }
 .ml-card-product-price {
-    margin-left: 13rem!important;
+    margin-left: 10rem!important;
 }
 .position-absolute-card-product-price {
     position: absolute;
@@ -30,6 +30,6 @@
   cursor: grab;
 }
 .card-product{
-    max-width: 300px; 
-    max-height: 350px
+    max-width: 250px; 
+    height: 330px
 }
