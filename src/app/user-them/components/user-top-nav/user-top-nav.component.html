@@ -1,75 +1,56 @@
 <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-default">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">E-Market</a>
-      <button
-        class="navbar-toggler ml-auto"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar-default"
-        aria-controls="navbar-default"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar-default">
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a href="../../index.html">
-                <img src="/docs/assets/img/brand/blue.png" />
-              </a>
-            </div>
-            <div class="col-6 collapse-close">
-              <button
-                type="button"
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbar-default"
-                aria-controls="navbar-default"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span></span>
-                <span></span>
-              </button>
-            </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">E-Market</a>
+    <button
+      class="navbar-toggler ml-auto"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-default"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-default">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a href="../../index.html">
+              <img src="/docs/assets/img/brand/blue.png" />
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button
+              type="button"
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbar-default"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
-
-        <ul class="navbar-nav ml-lg-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="#">
-              <i class="ni ni-favourite-28"></i>
-              <span class="nav-link-inner--text d-lg-none">Discover</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <!-- Search form -->
-            <div
-              class="navbar-search navbar-search-light form-inline mr-sm-3 float-left"
-            >
-              <app-search-form></app-search-form>
-            </div>
-          </li>
-        </ul>
-       
       </div>
-      <app-login-navbar></app-login-navbar>
+   
+      <ul class="navbar-nav ml-lg-auto">
+        <li class="nav-item">
+          <!-- Search form -->
+          <div
+            class="navbar-search navbar-search-light form-inline mr-sm-3 float-left"
+          >
+            <app-search-form></app-search-form>
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <div  class="row-cols-12">
-    <!-- Header -->
-    <div class="header bg-Secondary">
-      <div class="container-fluid">
-        <div class="header-body">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-dark bg-primary">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Library</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
+    <app-login-navbar></app-login-navbar>
   </div>
+</nav>
+<div class="row-cols-12">
+ <app-top-navbar-bottom></app-top-navbar-bottom>
+</div>

@@ -22,6 +22,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { AlertifyService } from './CommonService/alertify.service';
 import { AuthService } from './CommonService/auth.service';
 import { LocalStorageService } from './CommonService/local-storage.service';
+import { TopNavbarBottomComponent } from './user-them/components/top-navbar-bottom/top-navbar-bottom.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -40,7 +41,8 @@ export function tokenGetter() {
     SearchFormComponent,
     UserTopNavComponent,
     UserthmeProductRecommendationsTopComponent,
-    UserthmeProductCardListComponent
+    UserthmeProductCardListComponent,
+    TopNavbarBottomComponent
   ],
   imports: [
     BrowserModule,

@@ -20,10 +20,24 @@
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Or sign in with credentials</small>
-          </div>
-          <form role="form">
+          <form  (submit)="register()" role="form">
+            <div class="form-group mb-3">
+              <div
+                class="input-group input-group-merge input-group-alternative"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fas fa-user-tie"></i></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Full Name"
+                  type="text"
+                  [(ngModel)]="registerUser.fullName"
+                  [ngModelOptions]="{standalone: true}"
+                />
+              </div>
+            </div>
             <div class="form-group mb-3">
               <div
                 class="input-group input-group-merge input-group-alternative"
@@ -37,6 +51,25 @@
                   class="form-control"
                   placeholder="Email"
                   type="email"
+                  [(ngModel)]="registerUser.email"
+                  [ngModelOptions]="{standalone: true}"
+                />
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <div
+                class="input-group input-group-merge input-group-alternative"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fas fa-phone-alt"></i></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Mobile phone"
+                  type="tel"
+                  [(ngModel)]="registerUser.mobilePhones"
+                  [ngModelOptions]="{standalone: true}"
                 />
               </div>
             </div>
@@ -53,24 +86,27 @@
                   class="form-control"
                   placeholder="Password"
                   type="password"
+                  [(ngModel)]="registerUser.password"
+                  [ngModelOptions]="{standalone: true}"
                 />
               </div>
             </div>
-            <div
-              class="custom-control custom-control-alternative custom-checkbox"
-            >
-              <input
-                class="custom-control-input"
-                id=" customCheckLogin"
-                type="checkbox"
-              />
-              <label class="custom-control-label" for=" customCheckLogin">
-                <span class="text-muted">Remember me</span>
-              </label>
+            <div class="form-group">
+              <div
+                class="input-group input-group-merge input-group-alternative"
+              >
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fas fa-map-marked-alt"></i></span>
+                </div>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Address"   [(ngModel)]="registerUser.address"
+                [ngModelOptions]="{standalone: true}"></textarea>
+              </div>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4">
-                Sign in
+              <button type="submit" class="btn btn-primary my-4">
+                <i class="far fa-address-card"></i>
+                Kayıt Ol
               </button>
             </div>
           </form>

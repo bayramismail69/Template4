@@ -4,13 +4,13 @@
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 			<!-- Carousel indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="0"  [class]=" getCarouselIndicatorsClass(1)"></li>
+				<li data-target="#myCarousel" data-slide-to="1"  [class]=" getCarouselIndicatorsClass(2)"></li>
+				<li data-target="#myCarousel" data-slide-to="2" [class]=" getCarouselIndicatorsClass(3)"></li>
 			</ol>   
 			<!-- Wrapper for carousel items -->
 			<div class="carousel-inner">
-				<div class="carousel-item active">
+				<div [class]="getCarouselClass(1)">
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
@@ -98,7 +98,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="carousel-item">
+				<div [class]="getCarouselClass(2)">
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
@@ -186,7 +186,7 @@
 						</div>						
 					</div>
 				</div>
-				<div class="carousel-item">
+				<div [class]="getCarouselClass(3)">
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
