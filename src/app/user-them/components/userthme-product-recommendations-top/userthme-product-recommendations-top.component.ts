@@ -11,14 +11,13 @@ export class UserthmeProductRecommendationsTopComponent implements OnInit {
 
   time: number = 1;
   interval;
-
   startTimer() {
     this.interval = setInterval(() => {
       this.time++;
-      if (this.time >= 4) {
+      if (this.time > 3) {
         this.time = 1;
       }
-    }, 6000);
+    }, 5000);
   }
   getCarouselClass(carosuelItemId: number) {
     if (this.time === carosuelItemId) {
@@ -33,6 +32,14 @@ export class UserthmeProductRecommendationsTopComponent implements OnInit {
     } else {
       return '';
     }
+  }
+  next()
+  {
+    this.time++;
+  }
+  back()
+  {
+    this.time--;
   }
   ngOnInit(): void {
     this.startTimer();
